@@ -1,6 +1,5 @@
 const requestModal = document.querySelector('.new-request');
 const requestLink = document.querySelector('.add-request');
-const test = document.querySelector('#test');
 
 //open request modal
 requestLink.addEventListener('click',()=>{
@@ -11,7 +10,6 @@ requestLink.addEventListener('click',()=>{
 requestModal.addEventListener('click',(e)=>{
     if(e.target.classList.contains('new-request')){
         requestModal.classList.remove('open');
-        test.reset();
     }
 })
 
