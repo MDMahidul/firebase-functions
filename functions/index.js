@@ -16,3 +16,30 @@ exports.userDeleted = functions.auth.user().onDelete(user => {
   const doc = admin.firestore().collection('users').doc(user.uid);
   return doc.delete();
 });
+
+// http callable function (adding a request)
+exports.addRequest = functions.https.onCall((data, content)=>{
+
+    if(!content.auth){
+        throw new functions.https.HttpsError(
+            'unauthenticated',
+            'Only authenticated users can add requests'
+        );
+    }
+    if(data.text.length > 30){
+        throw new functions.https.HttpsError(
+            'invalid-argument',
+            'Request must be no more than 30 characters long'
+        );
+    }
+    return new Promise((resolve, reject)=>{
+        admin.firestore().collection('requests').add({
+            text: data.text,
+            upvotes: 0,
+        }).then(()=>{
+            return resolve();
+        }).catch((e)=>{
+            return reject(e);
+        });
+    });
+});
