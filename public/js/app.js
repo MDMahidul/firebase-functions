@@ -32,14 +32,14 @@ requestForm.addEventListener('submit', (e) => {
     });
   });
 
-  //notification
-  const notification = document.querySelector('.notification');
+  // notification
+const notification = document.querySelector('.notification');
 
-  const showNotification = (message) =>{
-    notification.textContent = message;
-    notification.classList.add('active');
-    setTimeout(()=>{
-      notification.classList.remove('active');
-      notification.textContent='';
-    },4000)
-  }
+const showNotification = (message) => {
+  notification.textContent = error.message;
+  notification.classList.add('active');
+  setTimeout(() => {
+    notification.classList.remove('active');
+    notification.textContent = '';
+  }, 4000);
+};

@@ -139,7 +139,7 @@ button{
   background: #ec2d2d;
   text-align: center;
   color: #fff;
-  margin-top: -100%;
+  margin-top: -100% !important;
   transition: all 0.4s;
 }
 .notification.active{
